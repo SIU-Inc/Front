@@ -107,7 +107,7 @@ function Sensor2() {
                 <div>
                   <ExportCSV
                     csvData={romero}
-                    fileName= 'works'
+                    fileName= 'C. M. Romero'
                   />
                 </div>
               </Table>
@@ -165,7 +165,7 @@ function Sensor2() {
                 <div>
                   <ExportCSV
                     csvData={poli}
-                    fileName= 'works'
+                    fileName= 'Polideportivo'
                   />
                 </div>
               </Table>
@@ -223,7 +223,7 @@ function Sensor2() {
                 <div>
                   <ExportCSV
                     csvData={icas}
-                    fileName= 'works'
+                    fileName= 'ICAS'
                   />
                 </div>
               </Table>
@@ -281,7 +281,7 @@ function Sensor2() {
                 <div>
                   <ExportCSV
                     csvData={labs}
-                    fileName= 'works'
+                    fileName= 'Laboratorios'
                   />
                 </div>
               </Table>
