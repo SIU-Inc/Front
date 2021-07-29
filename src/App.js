@@ -1,0 +1,27 @@
+import React from 'react'
+import { BrowserRouter as Router, Route} from 'react-router-dom'
+import './App.scss'
+import Navbar from './components/Navb'
+import Sidebar from './components/Sidebar'
+import Home from './pages/Home'
+import Sensor1 from './pages/Sensor1'
+import Sensor2 from './pages/Sensor2'
+
+function App() {
+
+  return (
+    <Router>
+      <Navbar />
+      <div className="flex">
+        <Sidebar />
+        <div className="content">
+          <Route path="/Home" exact={true} component={Home} />
+          <Route path="/Sensor1" exact={true} component={Sensor1} /> 
+          <Route path="/Sensor2" exact={true} component={Sensor2} />  
+        </div>
+      </div> 
+    </Router>
+  );
+}
+
+export default App;
