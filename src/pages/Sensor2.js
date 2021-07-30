@@ -71,7 +71,7 @@ function Sensor2() {
   return (
     <Container fluid>
       <Row>
-        <Col md="12">
+        <Col md="16">
           <Card className="strpied-tabled-with-hover">
             <Card.Header>
               <Card.Title as="h4">Sensor de Humedad</Card.Title>

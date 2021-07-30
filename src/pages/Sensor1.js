@@ -69,9 +69,9 @@ function Sensor1() {
   }, []);
 
   return (
-    <Container fluid>
+    <Container fluid="xl">
       <Row>
-        <Col md="12">
+        <Col>
           <Card className="strpied-tabled-with-hover">
             <Card.Header>
               <Card.Title as="h4">Sensor de Temperatura</Card.Title>
@@ -84,7 +84,6 @@ function Sensor1() {
               <Table responsive>
                 <thead>
                   <tr>
-                    <th className="border-0">ID</th>
                     <th className="border-0">Temperatura</th>
                     <th className="border-0">Hora</th>
                     <th className="border-0">Coordenadas</th>
@@ -94,7 +93,6 @@ function Sensor1() {
                 <tbody>
                   {romero?.map((romeroTemps) => (
                     <tr key={romeroTemps.id}>
-                      <td>{romeroTemps.id}</td>
                       <td>{romeroTemps.temperature}</td>
                       <td>{romeroTemps.createdAt}</td>
                       <td>
@@ -142,7 +140,6 @@ function Sensor1() {
               <Table responsive>
                 <thead>
                   <tr>
-                    <th className="border-0">ID</th>
                     <th className="border-0">Temperatura</th>
                     <th className="border-0">Hora</th>
                     <th className="border-0">Coordenadas</th>
@@ -152,7 +149,6 @@ function Sensor1() {
                 <tbody>
                   {poli?.map((poliTemps) => (
                     <tr key={poliTemps.id}>
-                      <td>{poliTemps.id}</td>
                       <td>{poliTemps.temperature}</td>
                       <td>{poliTemps.createdAt}</td>
                       <td>
@@ -200,7 +196,6 @@ function Sensor1() {
               <Table responsive>
                 <thead>
                   <tr>
-                    <th className="border-0">ID</th>
                     <th className="border-0">Temperatura</th>
                     <th className="border-0">Hora</th>
                     <th className="border-0">Coordenadas</th>
@@ -210,7 +205,6 @@ function Sensor1() {
                 <tbody>
                   {icas?.map((icasTemps) => (
                     <tr key={icasTemps.id}>
-                      <td>{icasTemps.id}</td>
                       <td>{icasTemps.temperature}</td>
                       <td>{icasTemps.createdAt}</td>
                       <td>
@@ -258,7 +252,6 @@ function Sensor1() {
               <Table responsive>
                 <thead>
                   <tr>
-                    <th className="border-0">ID</th>
                     <th className="border-0">Temperatura</th>
                     <th className="border-0">Hora</th>
                     <th className="border-0">Coordenadas</th>
@@ -268,7 +261,6 @@ function Sensor1() {
                 <tbody>
                   {labs?.map((labsTemps) => (
                     <tr key={labsTemps.id}>
-                      <td>{labsTemps.id}</td>
                       <td>{labsTemps.temperature}</td>
                       <td>{labsTemps.createdAt}</td>
                       <td>
