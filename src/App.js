@@ -10,6 +10,7 @@ import Sensor2 from './pages/Sensor2'
 function App() {
 
   return (
+    
     <Router>
       <Navbar />
       <div className="flex">

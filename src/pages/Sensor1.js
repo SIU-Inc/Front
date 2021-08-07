@@ -11,11 +11,12 @@ import {
   LineChart,
 } from "recharts";
 // react-bootstrap components
-import { Card, Table, Container, Row, Col, Tabs, Tab } from "react-bootstrap";
-
+import { Card, Table, Container, Row, Col, Tabs, Tab, Button } from "react-bootstrap";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { ExportCSV } from "../ExportCSV";
 
 function Sensor1() {
+  const position = [51.505, -0.09]
   const [temps, setTemps] = useState([]);
   const [icas, setIcas] = useState([]);
   const [romero, setRomero] = useState([]);
@@ -45,13 +46,13 @@ function Sensor1() {
         const labsTemps = [];
         const poliTemps = [];
         response?.allData?.forEach((temp, index) => {
-          if (temp.id > 200 && temp.id < 301) {
+          if (temp.id > 200 && temp.id < 221) {
             labsTemps.push(temp);
           }
-          if (temp.id > 301 && temp.id < 344) {
+          if (temp.id > 301 && temp.id < 322) {
             romeroTemps.push(temp);
           }
-          if (temp.id > 345 && temp.id < 396) {
+          if (temp.id > 345 && temp.id < 366) {
             poliTemps.push(temp);
           }
           if (temp.id > 397 && temp.id < 415) {
@@ -103,10 +104,12 @@ function Sensor1() {
                   ))}
                 </tbody>
                 <div>
-                  <ExportCSV
-                    csvData={romero}
-                    fileName= 'works'
-                  />
+                  <Button variant="contained" color="blue">
+                    <ExportCSV 
+                      csvData={romero}
+                      fileName= 'works'
+                    />
+                  </Button>
                 </div>
               </Table>
                 </Card.Body>
@@ -131,6 +134,17 @@ function Sensor1() {
                     <Line type="monotone" dataKey="temperature" stroke="#82ca9d" />
                   </LineChart>
                 </Card.Body>
+                <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
+                  <TileLayer
+                    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  />
+                  <Marker position={position}>
+                    <Popup>
+                      A pretty CSS3 popup. <br /> Easily customizable.
+                    </Popup>
+                  </Marker>
+                </MapContainer>
               </Card>
             </Col>
             </Tab>

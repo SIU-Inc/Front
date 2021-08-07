@@ -1,6 +1,21 @@
 import React, { useState, useEffect } from "react";
+import {
+  Legend,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Bar,
+  BarChart,
+  Line,
+  LineChart,
+} from "recharts";
+// react-bootstrap components
+import { Card, Table, Container, Row, Col, Tabs, Tab } from "react-bootstrap";
 
-function Home() {
+import { ExportCSV } from "../ExportCSV";
+
+function Graficas() {
   const [temps, setTemps] = useState([]);
   const [icas, setIcas] = useState([]);
   const [romero, setRomero] = useState([]);
@@ -8,14 +23,14 @@ function Home() {
   const [poli, setPoli] = useState([]);
   const [loading, setLoading] = useState(false);
 
+
   const mapReceivedData = (temps) => {
     const transformed = temps.map((element) => {
       const date = new Date(element?.time);
       return { ...element, time: date.toLocaleDateString() };
     });
     return transformed;
-  }
-
+  };
   useEffect(() => {
     setLoading(true);
     const getTemps = async () => {
@@ -53,11 +68,9 @@ function Home() {
     getTemps();
   }, []);
 
-  return(
-    <div>
-      <p>hola</p>
-    </div>
-)
+  return (
+    
+  )
 }
 
-export default Home;
+export default Graficas;

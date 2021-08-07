@@ -69,7 +69,7 @@ function Sensor2() {
   }, []);
 
   return (
-    <Container fluid>
+    <Container fluid="xl">
       <Row>
         <Col md="16">
           <Card className="strpied-tabled-with-hover">
