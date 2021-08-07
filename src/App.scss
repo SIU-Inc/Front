@@ -40,3 +40,7 @@ $grey: #c4ccde;
     }
   }
 }
+
+.leaflet-container {
+  height: 100% !important; //aqui pone la dimensiones de tu mapa, 
+}

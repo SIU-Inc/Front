@@ -11,6 +11,7 @@ const Navb = () =>{
           <Nav.Link href="/Home">Home</Nav.Link>
           <Nav.Link href="/Sensor1">Temperatura</Nav.Link>
           <Nav.Link href="/Sensor2">Humedad</Nav.Link>
+          <Nav.Link href="/Graficas">Graficas</Nav.Link>
         </Nav>
         </Container>
       </Navbar>

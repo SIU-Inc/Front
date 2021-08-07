@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {
+  AreaChart,
+  Area,
   Legend,
   CartesianGrid,
   XAxis,
@@ -69,6 +71,39 @@ function Graficas() {
   }, []);
 
   return (
+    <Container fluid>
+      <Row>
+        <Col>
+          <Card className="strpied-tabled-with-hover">
+              <Card.Header>
+                <Card.Title as="h4">Comparativa</Card.Title>
+                <p className="card-category">Monseñor Romero - ICAS</p>
+              </Card.Header>
+              <Card.Body>
+                <AreaChart width={730} height={250} data={romero,icas}
+                    margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+                    <defs>
+                      <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
+                        <stop offset="95%" stopColor="#8884d8" stopOpacity={0}/>
+                      </linearGradient>
+                      <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8}/>
+                        <stop offset="95%" stopColor="#82ca9d" stopOpacity={0}/>
+                      </linearGradient>
+                    </defs>
+                    <XAxis dataKey="name" />
+                    <YAxis />
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <Tooltip />
+                    <Area type="monotone" dataKey="icas.temperature" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
+                    <Area type="monotone" dataKey="romero.temperature" stroke="#82ca9d" fillOpacity={1} fill="url(#colorPv)" />
+                  </AreaChart>
+                </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
     
   )
 }

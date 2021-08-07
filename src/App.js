@@ -6,6 +6,7 @@ import Sidebar from './components/Sidebar'
 import Home from './pages/Home'
 import Sensor1 from './pages/Sensor1'
 import Sensor2 from './pages/Sensor2'
+import Graficas from './pages/Graficas'
 
 function App() {
 
@@ -18,7 +19,8 @@ function App() {
         <div className="content">
           <Route path="/Home" exact={true} component={Home} />
           <Route path="/Sensor1" exact={true} component={Sensor1} /> 
-          <Route path="/Sensor2" exact={true} component={Sensor2} />  
+          <Route path="/Sensor2" exact={true} component={Sensor2} />
+          <Route path="/Graficas" exact={true} component={Graficas} />  
         </div>
       </div> 
     </Router>

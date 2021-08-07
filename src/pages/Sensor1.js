@@ -10,10 +10,21 @@ import {
   Line,
   LineChart,
 } from "recharts";
-// react-bootstrap components
 import { Card, Table, Container, Row, Col, Tabs, Tab, Button } from "react-bootstrap";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { ExportCSV } from "../ExportCSV";
+import L from 'leaflet'
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import  Icon  from 'leaflet/dist/images/marker-icon.png';
+import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+import IconContext from 'react-icons';
+
+let DefaultIcon = L.icon({
+  iconUrl: Icon,
+  shadowUrl: iconShadow,
+});
+
+L.Marker.prototype.options.icon = DefaultIcon;
 
 function Sensor1() {
   const position = [51.505, -0.09]
@@ -134,12 +145,12 @@ function Sensor1() {
                     <Line type="monotone" dataKey="temperature" stroke="#82ca9d" />
                   </LineChart>
                 </Card.Body>
-                <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
+                <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
                   <TileLayer
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                   />
-                  <Marker position={position}>
+                  <Marker position={[51.505, -0.09]}>
                     <Popup>
                       A pretty CSS3 popup. <br /> Easily customizable.
                     </Popup>
