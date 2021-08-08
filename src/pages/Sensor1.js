@@ -5,8 +5,6 @@ import {
   XAxis,
   YAxis,
   Tooltip,
-  Bar,
-  BarChart,
   Line,
   LineChart,
 } from "recharts";
