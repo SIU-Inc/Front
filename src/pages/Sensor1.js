@@ -12,6 +12,7 @@ import {
 } from "recharts";
 import { Card, Table, Container, Row, Col, Tabs, Tab, Button } from "react-bootstrap";
 import { ExportCSV } from "../ExportCSV";
+import '../App.scss'
 import L from 'leaflet'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -81,7 +82,7 @@ function Sensor1() {
   }, []);
 
   return (
-    <Container fluid="xl">
+    <Container fluid>
       <Row>
         <Col>
           <Card className="strpied-tabled-with-hover">
@@ -127,7 +128,7 @@ function Sensor1() {
                 <Col md="12">
               <Card className="card-plain table-plain-bg">
                 <Card.Header>
-                  <Card.Title as="h4">Comparativa</Card.Title>
+                  <Card.Title as="h4">Gráfica y Mapa</Card.Title>
                   <p className="card-category">Gráfica</p>
                 </Card.Header>
                 <Card.Body>
@@ -145,17 +146,20 @@ function Sensor1() {
                     <Line type="monotone" dataKey="temperature" stroke="#82ca9d" />
                   </LineChart>
                 </Card.Body>
-                <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
-                  <TileLayer
-                    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                  />
-                  <Marker position={[51.505, -0.09]}>
-                    <Popup>
-                      A pretty CSS3 popup. <br /> Easily customizable.
-                    </Popup>
-                  </Marker>
-                </MapContainer>
+                <Card.Body>
+                  <Card.Title as="h4">Mapa de posición</Card.Title>
+                  <MapContainer center={[13.67936, -89.23589]} zoom={13} scrollWheelZoom={false}>
+                    <TileLayer
+                      attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    <Marker position={[13.67936, -89.23589]}>
+                      <Popup>
+                        Centro Monseñor Romero. <br /> Coordenadas: 13.67936, -89.23589
+                      </Popup>
+                    </Marker>
+                  </MapContainer>
+                </Card.Body>
               </Card>
             </Col>
             </Tab>
@@ -183,18 +187,18 @@ function Sensor1() {
                     </tr>
                   ))}
                 </tbody>
-                <div>
-                  <ExportCSV
-                    csvData={poli}
-                    fileName= 'works'
-                  />
-                </div>
+                <Button variant="contained" color="blue">
+                    <ExportCSV 
+                      csvData={poli}
+                      fileName= 'works'
+                    />
+                  </Button>
               </Table>
                 </Card.Body>
                 <Col md="12">
               <Card className="card-plain table-plain-bg">
                 <Card.Header>
-                  <Card.Title as="h4">Comparativa</Card.Title>
+                  <Card.Title as="h4">Gráfica y Mapa</Card.Title>
                   <p className="card-category">Gráfica</p>
                 </Card.Header>
                 <Card.Body>
@@ -211,6 +215,20 @@ function Sensor1() {
                     <Legend />
                     <Line type="monotone" dataKey="temperature" stroke="#82ca9d" />
                   </LineChart>
+                </Card.Body>
+                <Card.Body>
+                  <Card.Title as="h4">Mapa de posición</Card.Title>
+                  <MapContainer center={[13.69299, -89.23633]} zoom={13} scrollWheelZoom={false}>
+                    <TileLayer
+                      attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    <Marker position={[13.69299, -89.23633]}>
+                      <Popup>
+                        Polideportivo <br /> Coordenadas: 13.69299, -89.23633
+                      </Popup>
+                    </Marker>
+                  </MapContainer>
                 </Card.Body>
               </Card>
             </Col>
@@ -239,18 +257,18 @@ function Sensor1() {
                     </tr>
                   ))}
                 </tbody>
-                <div>
-                  <ExportCSV
-                    csvData={icas}
-                    fileName= 'works'
-                  />
-                </div>
+                <Button variant="contained" color="blue">
+                    <ExportCSV 
+                      csvData={icas}
+                      fileName= 'works'
+                    />
+                  </Button>
               </Table>
                 </Card.Body>
                 <Col md="12">
               <Card className="card-plain table-plain-bg">
                 <Card.Header>
-                  <Card.Title as="h4">Comparativa</Card.Title>
+                  <Card.Title as="h4">Gráfica y Mapa</Card.Title>
                   <p className="card-category">Gráfica</p>
                 </Card.Header>
                 <Card.Body>
@@ -267,6 +285,20 @@ function Sensor1() {
                     <Legend />
                     <Line type="monotone" dataKey="temperature" stroke="#82ca9d" />
                   </LineChart>
+                </Card.Body>
+                <Card.Body>
+                  <Card.Title as="h4">Mapa de posición</Card.Title>
+                  <MapContainer center={[13.69299, -89.23633]} zoom={13} scrollWheelZoom={false}>
+                    <TileLayer
+                      attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    <Marker position={[13.69299, -89.23633]}>
+                      <Popup>
+                        ICAS. <br /> Coordenadas: 13.69299, -89.23633
+                      </Popup>
+                    </Marker>
+                  </MapContainer>
                 </Card.Body>
               </Card>
             </Col>
@@ -295,18 +327,18 @@ function Sensor1() {
                     </tr>
                   ))}
                 </tbody>
-                <div>
-                  <ExportCSV
-                    csvData={labs}
-                    fileName= 'works'
-                  />
-                </div>
+                <Button variant="contained" color="blue">
+                    <ExportCSV 
+                      csvData={labs}
+                      fileName= 'works'
+                    />
+                  </Button>
               </Table>
                 </Card.Body>
                 <Col md="12">
               <Card className="card-plain table-plain-bg">
                 <Card.Header>
-                  <Card.Title as="h4">Comparativa</Card.Title>
+                  <Card.Title as="h4">Gráfica y Mapa</Card.Title>
                   <p className="card-category">Gráfica</p>
                 </Card.Header>
                 <Card.Body>
@@ -323,6 +355,20 @@ function Sensor1() {
                     <Legend />
                     <Line type="monotone" dataKey="temperature" stroke="#82ca9d" />
                   </LineChart>
+                </Card.Body>
+                <Card.Body>
+                  <Card.Title as="h4">Mapa de posición</Card.Title>
+                  <MapContainer center={[13.67942, -89.23591]} zoom={13} scrollWheelZoom={false}>
+                    <TileLayer
+                      attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    <Marker position={[13.67942, -89.23591]}>
+                      <Popup>
+                        Labotarios. <br /> Coordenadas: 13.67942, -89.23591
+                      </Popup>
+                    </Marker>
+                  </MapContainer>
                 </Card.Body>
               </Card>
             </Col>

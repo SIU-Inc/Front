@@ -10,12 +10,25 @@ import {
   Line,
   LineChart,
 } from "recharts";
-// react-bootstrap components
-import { Card, Table, Container, Row, Col, Tabs, Tab } from "react-bootstrap";
-
+import { Card, Table, Container, Row, Col, Tabs, Tab, Button } from "react-bootstrap";
 import { ExportCSV } from "../ExportCSV";
+import '../App.scss'
+import L from 'leaflet'
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import  Icon  from 'leaflet/dist/images/marker-icon.png';
+import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+import IconContext from 'react-icons';
+
+let DefaultIcon = L.icon({
+  iconUrl: Icon,
+  shadowUrl: iconShadow,
+});
+
+L.Marker.prototype.options.icon = DefaultIcon;
 
 function Sensor2() {
+  const position = [51.505, -0.09]
   const [temps, setTemps] = useState([]);
   const [icas, setIcas] = useState([]);
   const [romero, setRomero] = useState([]);
@@ -45,13 +58,13 @@ function Sensor2() {
         const labsTemps = [];
         const poliTemps = [];
         response?.allData?.forEach((temp, index) => {
-          if (temp.id > 200 && temp.id < 301) {
+          if (temp.id > 200 && temp.id < 221) {
             labsTemps.push(temp);
           }
-          if (temp.id > 301 && temp.id < 344) {
+          if (temp.id > 301 && temp.id < 322) {
             romeroTemps.push(temp);
           }
-          if (temp.id > 345 && temp.id < 396) {
+          if (temp.id > 345 && temp.id < 366) {
             poliTemps.push(temp);
           }
           if (temp.id > 397 && temp.id < 415) {
@@ -71,7 +84,7 @@ function Sensor2() {
   return (
     <Container fluid="xl">
       <Row>
-        <Col md="16">
+        <Col>
           <Card className="strpied-tabled-with-hover">
             <Card.Header>
               <Card.Title as="h4">Sensor de Humedad</Card.Title>
@@ -84,7 +97,6 @@ function Sensor2() {
               <Table responsive>
                 <thead>
                   <tr>
-                    <th className="border-0">ID</th>
                     <th className="border-0">Humedad</th>
                     <th className="border-0">Hora</th>
                     <th className="border-0">Coordenadas</th>
@@ -94,7 +106,6 @@ function Sensor2() {
                 <tbody>
                   {romero?.map((romeroTemps) => (
                     <tr key={romeroTemps.id}>
-                      <td>{romeroTemps.id}</td>
                       <td>{romeroTemps.humidity}</td>
                       <td>{romeroTemps.createdAt}</td>
                       <td>
@@ -105,17 +116,19 @@ function Sensor2() {
                   ))}
                 </tbody>
                 <div>
-                  <ExportCSV
-                    csvData={romero}
-                    fileName= 'C. M. Romero'
-                  />
+                  <Button variant="contained" color="blue">
+                    <ExportCSV 
+                      csvData={romero}
+                      fileName= 'works'
+                    />
+                  </Button>
                 </div>
               </Table>
                 </Card.Body>
                 <Col md="12">
               <Card className="card-plain table-plain-bg">
                 <Card.Header>
-                  <Card.Title as="h4">Comparativa</Card.Title>
+                  <Card.Title as="h4">Gráfica y Mapa</Card.Title>
                   <p className="card-category">Gráfica</p>
                 </Card.Header>
                 <Card.Body>
@@ -133,6 +146,20 @@ function Sensor2() {
                     <Line type="monotone" dataKey="humidity" stroke="#82ca9d" />
                   </LineChart>
                 </Card.Body>
+                <Card.Body>
+                  <Card.Title as="h4">Mapa de posición</Card.Title>
+                  <MapContainer center={[13.67936, -89.23589]} zoom={13} scrollWheelZoom={false}>
+                    <TileLayer
+                      attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    <Marker position={[13.67936, -89.23589]}>
+                      <Popup>
+                        Centro Monseñor Romero. <br /> Coordenadas: 13.67936, -89.23589
+                      </Popup>
+                    </Marker>
+                  </MapContainer>
+                </Card.Body>
               </Card>
             </Col>
             </Tab>
@@ -142,8 +169,7 @@ function Sensor2() {
               <Table responsive>
                 <thead>
                   <tr>
-                    <th className="border-0">ID</th>
-                    <th className="border-0">Temperatura</th>
+                    <th className="border-0">Humedad</th>
                     <th className="border-0">Hora</th>
                     <th className="border-0">Coordenadas</th>
                     <th className="border-0">Frecuencia</th>
@@ -152,7 +178,6 @@ function Sensor2() {
                 <tbody>
                   {poli?.map((poliTemps) => (
                     <tr key={poliTemps.id}>
-                      <td>{poliTemps.id}</td>
                       <td>{poliTemps.humidity}</td>
                       <td>{poliTemps.createdAt}</td>
                       <td>
@@ -162,18 +187,18 @@ function Sensor2() {
                     </tr>
                   ))}
                 </tbody>
-                <div>
-                  <ExportCSV
-                    csvData={poli}
-                    fileName= 'Polideportivo'
-                  />
-                </div>
+                <Button variant="contained" color="blue">
+                    <ExportCSV 
+                      csvData={poli}
+                      fileName= 'works'
+                    />
+                  </Button>
               </Table>
                 </Card.Body>
                 <Col md="12">
               <Card className="card-plain table-plain-bg">
                 <Card.Header>
-                  <Card.Title as="h4">Comparativa</Card.Title>
+                  <Card.Title as="h4">Gráfica y Mapa</Card.Title>
                   <p className="card-category">Gráfica</p>
                 </Card.Header>
                 <Card.Body>
@@ -191,6 +216,20 @@ function Sensor2() {
                     <Line type="monotone" dataKey="humidity" stroke="#82ca9d" />
                   </LineChart>
                 </Card.Body>
+                <Card.Body>
+                  <Card.Title as="h4">Mapa de posición</Card.Title>
+                  <MapContainer center={[13.69299, -89.23633]} zoom={13} scrollWheelZoom={false}>
+                    <TileLayer
+                      attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    <Marker position={[13.69299, -89.23633]}>
+                      <Popup>
+                        Polideportivo <br /> Coordenadas: 13.69299, -89.23633
+                      </Popup>
+                    </Marker>
+                  </MapContainer>
+                </Card.Body>
               </Card>
             </Col>
             </Tab>
@@ -200,8 +239,7 @@ function Sensor2() {
               <Table responsive>
                 <thead>
                   <tr>
-                    <th className="border-0">ID</th>
-                    <th className="border-0">Temperatura</th>
+                    <th className="border-0">Humedad</th>
                     <th className="border-0">Hora</th>
                     <th className="border-0">Coordenadas</th>
                     <th className="border-0">Frecuencia</th>
@@ -210,7 +248,6 @@ function Sensor2() {
                 <tbody>
                   {icas?.map((icasTemps) => (
                     <tr key={icasTemps.id}>
-                      <td>{icasTemps.id}</td>
                       <td>{icasTemps.humidity}</td>
                       <td>{icasTemps.createdAt}</td>
                       <td>
@@ -220,18 +257,18 @@ function Sensor2() {
                     </tr>
                   ))}
                 </tbody>
-                <div>
-                  <ExportCSV
-                    csvData={icas}
-                    fileName= 'ICAS'
-                  />
-                </div>
+                <Button variant="contained" color="blue">
+                    <ExportCSV 
+                      csvData={icas}
+                      fileName= 'works'
+                    />
+                  </Button>
               </Table>
                 </Card.Body>
                 <Col md="12">
               <Card className="card-plain table-plain-bg">
                 <Card.Header>
-                  <Card.Title as="h4">Comparativa</Card.Title>
+                  <Card.Title as="h4">Gráfica y Mapa</Card.Title>
                   <p className="card-category">Gráfica</p>
                 </Card.Header>
                 <Card.Body>
@@ -249,6 +286,20 @@ function Sensor2() {
                     <Line type="monotone" dataKey="humidity" stroke="#82ca9d" />
                   </LineChart>
                 </Card.Body>
+                <Card.Body>
+                  <Card.Title as="h4">Mapa de posición</Card.Title>
+                  <MapContainer center={[13.69299, -89.23633]} zoom={13} scrollWheelZoom={false}>
+                    <TileLayer
+                      attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    <Marker position={[13.69299, -89.23633]}>
+                      <Popup>
+                        ICAS. <br /> Coordenadas: 13.69299, -89.23633
+                      </Popup>
+                    </Marker>
+                  </MapContainer>
+                </Card.Body>
               </Card>
             </Col>
             </Tab>
@@ -258,8 +309,7 @@ function Sensor2() {
               <Table responsive>
                 <thead>
                   <tr>
-                    <th className="border-0">ID</th>
-                    <th className="border-0">Temperatura</th>
+                    <th className="border-0">Humedad</th>
                     <th className="border-0">Hora</th>
                     <th className="border-0">Coordenadas</th>
                     <th className="border-0">Frecuencia</th>
@@ -268,7 +318,6 @@ function Sensor2() {
                 <tbody>
                   {labs?.map((labsTemps) => (
                     <tr key={labsTemps.id}>
-                      <td>{labsTemps.id}</td>
                       <td>{labsTemps.humidity}</td>
                       <td>{labsTemps.createdAt}</td>
                       <td>
@@ -278,18 +327,18 @@ function Sensor2() {
                     </tr>
                   ))}
                 </tbody>
-                <div>
-                  <ExportCSV
-                    csvData={labs}
-                    fileName= 'Laboratorios'
-                  />
-                </div>
+                <Button variant="contained" color="blue">
+                    <ExportCSV 
+                      csvData={labs}
+                      fileName= 'works'
+                    />
+                  </Button>
               </Table>
                 </Card.Body>
                 <Col md="12">
               <Card className="card-plain table-plain-bg">
                 <Card.Header>
-                  <Card.Title as="h4">Comparativa</Card.Title>
+                  <Card.Title as="h4">Gráfica y Mapa</Card.Title>
                   <p className="card-category">Gráfica</p>
                 </Card.Header>
                 <Card.Body>
@@ -306,6 +355,20 @@ function Sensor2() {
                     <Legend />
                     <Line type="monotone" dataKey="humidity" stroke="#82ca9d" />
                   </LineChart>
+                </Card.Body>
+                <Card.Body>
+                  <Card.Title as="h4">Mapa de posición</Card.Title>
+                  <MapContainer center={[13.67942, -89.23591]} zoom={13} scrollWheelZoom={false}>
+                    <TileLayer
+                      attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    <Marker position={[13.67942, -89.23591]}>
+                      <Popup>
+                        Labotarios. <br /> Coordenadas: 13.67942, -89.23591
+                      </Popup>
+                    </Marker>
+                  </MapContainer>
                 </Card.Body>
               </Card>
             </Col>

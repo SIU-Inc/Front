@@ -76,11 +76,11 @@ function Graficas() {
         <Col>
           <Card className="strpied-tabled-with-hover">
               <Card.Header>
-                <Card.Title as="h4">Comparativa</Card.Title>
-                <p className="card-category">Monseñor Romero - ICAS</p>
+                <Card.Title as="h4">Comparativa Humedad y Temperatura</Card.Title>
+                <p className="card-category">Monseñor Romero</p>
               </Card.Header>
               <Card.Body>
-                <AreaChart width={730} height={250} data={romero,icas}
+                <AreaChart width={730} height={250} data={romero}
                     margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
                     <defs>
                       <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
@@ -96,8 +96,8 @@ function Graficas() {
                     <YAxis />
                     <CartesianGrid strokeDasharray="3 3" />
                     <Tooltip />
-                    <Area type="monotone" dataKey="icas.temperature" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
-                    <Area type="monotone" dataKey="romero.temperature" stroke="#82ca9d" fillOpacity={1} fill="url(#colorPv)" />
+                    <Area type="monotone" dataKey="temperature" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
+                    <Area type="monotone" dataKey="humidity" stroke="#82ca9d" fillOpacity={1} fill="url(#colorPv)" />
                   </AreaChart>
                 </Card.Body>
           </Card>
