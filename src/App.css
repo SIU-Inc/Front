@@ -27,6 +27,7 @@
 .Navbar .leftSide button{
   display: none;
   align-items: left; 
+  border-radius: 5px;
 }
 
 .Navbar .leftSide #hidden{

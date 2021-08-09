@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../App.css";
-import { IoIosMenu } from "react-icons/io";
+import ReorderIcon from "@material-ui/icons/Reorder";
 
 function Navbar(){
     const [showLinks, setShowLinks] = useState(false);
@@ -14,7 +14,7 @@ function Navbar(){
                 <a href="/Graficas">Graficas</a>
             </div>
             <button onClick={() => setShowLinks(!showLinks)}>
-                <IoIosMenu />
+                <ReorderIcon />
             </button>
         </div>
         <div className="rightSide"></div>
