@@ -1,107 +1,24 @@
-import React , {useEffect} from 'react'
-import './Navbar.css';
-import { NavLink } from 'react-router-dom';
-import $ from 'jquery';
+import React, { useState } from "react";
+import "../App.css";
+import { IoIosMenu } from "react-icons/io";
 
-const Navbar = () => {
-
-  function animation(){
-    var tabsNewAnim = $('#navbarSupportedContent');
-    var activeItemNewAnim = tabsNewAnim.find('.active');
-    var activeWidthNewAnimHeight = activeItemNewAnim.innerHeight();
-    var activeWidthNewAnimWidth = activeItemNewAnim.innerWidth();
-    var itemPosNewAnimTop = activeItemNewAnim.position();
-    var itemPosNewAnimLeft = activeItemNewAnim.position();
-    $(".hori-selector").css({
-      "top":itemPosNewAnimTop.top + "px", 
-      "left":itemPosNewAnimLeft.left + "px",
-      "height": activeWidthNewAnimHeight + "px",
-      "width": activeWidthNewAnimWidth + "px"
-    });
-    $("#navbarSupportedContent").on("click","li",function(e){
-      $('#navbarSupportedContent ul li').removeClass("active");
-      $(this).addClass('active');
-      var activeWidthNewAnimHeight = $(this).innerHeight();
-      var activeWidthNewAnimWidth = $(this).innerWidth();
-      var itemPosNewAnimTop = $(this).position();
-      var itemPosNewAnimLeft = $(this).position();
-      $(".hori-selector").css({
-        "top":itemPosNewAnimTop.top + "px", 
-        "left":itemPosNewAnimLeft.left + "px",
-        "height": activeWidthNewAnimHeight + "px",
-        "width": activeWidthNewAnimWidth + "px"
-      });
-    });
-  }
-
-  useEffect(() => {
-    
-    animation();
-    $(window).on('resize', function(){
-      setTimeout(function(){ animation(); }, 500);
-    });
-    
-  }, []);
-
-  return (
-  <nav className="navbar navbar-expand-lg navbar-mainbg">
-    
-      <NavLink className="navbar-brand navbar-logo" to="/" exact>
-        Sensores UCA
-      </NavLink>
-    
-    
-      <button 
-        className="navbar-toggler"
-        onClick={ function(){
-          setTimeout(function(){ animation(); });
-        }}
-        type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <i className="fas fa-bars text-white"></i>
-      </button>
- 
-      <div 
-        className="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul className="navbar-nav ml-auto">
-            
-            <div className="hori-selector">
-              <div className="left"></div>
-              <div className="right"></div>
+function Navbar(){
+    const [showLinks, setShowLinks] = useState(false);
+    return (
+    <div className="Navbar">
+        <div className="leftSide">
+            <div className="linkls" id={showLinks ? 'hidden' : ""}>
+                <a href="/">Home</a>
+                <a href="/Sensor1">Temperatura</a>
+                <a href="/Sensor2">Humedad</a>
+                <a href="/Graficas">Graficas</a>
             </div>
-            
-            <li className="nav-item active">
-              <NavLink className="nav-link" to="/Home" exact>
-                <i 
-                className="fas fa-tachometer-alt">
-                </i>Home
-              </NavLink>
-            </li>
-
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/Sensor1" exact>
-                <i 
-                className="far fa-address-book">
-                </i>temperatura
-              </NavLink> 
-            </li>
-
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/Sensor2" exact>
-                <i 
-                className="far fa-clone">
-                </i>Humedad
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/Graficas" exact>
-                <i 
-                className="far fa-chart-bar">
-                </i>Graficas
-              </NavLink>
-            </li>
-        </ul>
-      </div>
-  </nav>
-  )
+            <button onClick={() => setShowLinks(!showLinks)}>
+                <IoIosMenu />
+            </button>
+        </div>
+        <div className="rightSide"></div>
+    </div>
+    )
 }
-export default Navbar;
+ export default Navbar;

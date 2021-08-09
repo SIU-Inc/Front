@@ -83,7 +83,7 @@ function Sensor1() {
     <Container fluid>
       <Row>
         <Col>
-          <Card className="strpied-tabled-with-hover">
+          <Card className="strpied-tabled-with-hover" >
             <Card.Header>
               <Card.Title as="h4">Sensor de Temperatura</Card.Title>
               <p className="card-category">Temperatura</p>

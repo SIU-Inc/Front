@@ -15,7 +15,7 @@ function App() {
       <Navbar />
       <div className="flex">
         <div className="content">
-          <Route path="/Home" exact={true} component={Home} />
+          <Route path="/" exact={true} component={Home} />
           <Route path="/Sensor1" exact={true} component={Sensor1} /> 
           <Route path="/Sensor2" exact={true} component={Sensor2} />
           <Route path="/Graficas" exact={true} component={Graficas} />  
