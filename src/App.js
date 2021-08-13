@@ -1,27 +1,26 @@
-import React from 'react'
-import { BrowserRouter as Router, Route} from 'react-router-dom'
-import './App.scss'
-import Navbar from './components/Navbar';
-import Home from './pages/Home'
-import Sensor1 from './pages/Sensor1'
-import Sensor2 from './pages/Sensor2'
-import Graficas from './pages/Graficas'
+import { Switch, Route, Redirect } from 'react-router-dom';
+import Sidebar from './components/Sidebar';
+import Dashboard from './pages/Dashboard';
+import Temperatura from './pages/Temperatura';
+import Home from './pages/Home';
+import Humedad from './pages/Humedad';
+import './assets/styles/tailwind.css';
 
 function App() {
 
   return (
-    
-    <Router>
-      <Navbar />
-      <div className="flex">
-        <div className="content">
-          <Route path="/" exact={true} component={Home} />
-          <Route path="/Sensor1" exact={true} component={Sensor1} /> 
-          <Route path="/Sensor2" exact={true} component={Sensor2} />
-          <Route path="/Graficas" exact={true} component={Graficas} />  
-        </div>
-      </div> 
-    </Router>
+    <>
+    <Sidebar />
+    <div className="md:ml-64">
+        <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/temperatura" component={Temperatura} />
+            <Route exact path="/humedad" component={Humedad} />
+            <Redirect from="*" to="/" />
+        </Switch>
+    </div>
+    </>
   );
 }
 

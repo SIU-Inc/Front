@@ -1,7 +1,7 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
 import * as FileSaver from 'file-saver';
 import * as XLSX from 'xlsx';
+import Button from "@material-tailwind/react/Button";
 
 export const ExportCSV = ({csvData, fileName}) => {
     const fileType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
@@ -16,6 +16,14 @@ export const ExportCSV = ({csvData, fileName}) => {
     }
 
     return (
-        <Button variant="warning" onClick={(e) => exportToCSV(csvData,fileName)}>Export</Button>
+        <Button 
+        color="purple"
+        buttonType="filled"
+        size="regular"
+        rounded={false}
+        block={false}
+        iconOnly={false}
+        ripple="light"
+        onClick={(e) => exportToCSV(csvData,fileName)}>Exportar CSV</Button>
     )
 }
