@@ -40,7 +40,7 @@ export default function CardTable() {
         const getTemps = async () => {
         try {
             const tempResponse = await fetch(
-            "http://localhost:8080/api/temperature"
+            "https://api-ttn.herokuapp.com/api/temperature"
             );
             const response = await tempResponse.json();
             setTemps(mapReceivedData(response?.allData));
@@ -128,8 +128,8 @@ export default function CardTable() {
                 <TabPane active={openTab === 1 ? true : false}>
                     <Card>
                         <br />
-                        <CardHeader color="purple" contentPosition="left">
-                            <h2 className="text-white text-2xl">
+                        <CardHeader color="purple" contentPosition="left" >
+                            <h2 className="text-white l:text-5xl sm:text-sm">
                             Centro Monseñor Romero</h2>
 
                         </CardHeader>

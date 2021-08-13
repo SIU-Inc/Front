@@ -39,7 +39,7 @@ export default function CardTable() {
         const getTemps = async () => {
         try {
             const tempResponse = await fetch(
-            "http://localhost:8080/api/temperature"
+            "https://api-ttn.herokuapp.com/api/temperature"
             );
             const response = await tempResponse.json();
             setTemps(mapReceivedData(response?.allData));
