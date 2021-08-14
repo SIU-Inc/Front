@@ -128,7 +128,7 @@ export default function CardTable() {
                     <Card>
                         <br />
                         <CardHeader color="purple" contentPosition="left">
-                            <h2 className="text-white text-2xl">Centro Monseñor Romero</h2>
+                            <h2 className="text-lg">Centro Monseñor Romero</h2>
                         </CardHeader>
                         <CardBody>
                             <div className="overflow-x-auto">
@@ -189,7 +189,7 @@ export default function CardTable() {
                     <Card>
                         <br />
                         <CardHeader color="purple" contentPosition="left">
-                            <h2 className="text-white text-2xl">ICAS</h2>
+                            <h2 className="text-lg">ICAS</h2>
                         </CardHeader>
                         <CardBody>
                             <div className="overflow-x-auto">
@@ -234,7 +234,6 @@ export default function CardTable() {
                             />
                         <br />
                         <div className="bg-light-blue-500 pt-14 pb-28 px-3 md:px-8 h-auto">
-                            <h3 className="text-white text-2xl">Ubicación toma de temperatura</h3>
                         </div>
                         <div className="px-3 md:px-8 h-auto -mt-28 mb-16">
                             <div className="container mx-auto max-w-full">
@@ -250,7 +249,7 @@ export default function CardTable() {
                     <Card>
                         <br />
                         <CardHeader color="purple" contentPosition="left">
-                            <h2 className="text-white text-2xl">Edificio Jon de Cortina</h2>
+                            <h2 className="text-lg">Edificio Jon de Cortina</h2>
                         </CardHeader>
                         <CardBody>
                             <div className="overflow-x-auto">
@@ -295,7 +294,6 @@ export default function CardTable() {
                             />
                         <br />
                         <div className="bg-light-blue-500 pt-14 pb-28 px-3 md:px-8 h-auto">
-                            <h3 className="text-white text-2xl">Ubicación toma de temperatura</h3>
                         </div>
                         <div className="px-3 md:px-8 h-auto -mt-28 mb-16">
                             <div className="container mx-auto max-w-full">
@@ -311,7 +309,7 @@ export default function CardTable() {
                     <Card>
                         <br />
                         <CardHeader color="purple" contentPosition="left">
-                            <h2 className="text-white text-2xl">Polideportivo UCA</h2>
+                            <h2 className="text-lg">Polideportivo UCA</h2>
                         </CardHeader>
                         <CardBody>
                             <div className="overflow-x-auto">
@@ -356,7 +354,6 @@ export default function CardTable() {
                             />
                         <br />
                         <div className="bg-light-blue-500 pt-14 pb-28 px-3 md:px-8 h-auto">
-                            <h3 className="text-white text-2xl">Ubicación toma de temperatura</h3>
                         </div>
                         <div className="px-3 md:px-8 h-auto -mt-28 mb-16">
                             <div className="container mx-auto max-w-full">

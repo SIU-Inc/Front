@@ -556,6 +556,15 @@ video {
 }.text-sm{
 	font-size: 0.875rem;
 	line-height: 1.25rem;
+}.text-lg{
+	font-size:1.125rem;
+	line-height:1.75rem;
+}.text-xs{
+	font-size:0.75rem;
+	line-height:1rem;
+}.text-base{
+	font-size:1rem;
+	line-height:1.5rem;
 }.text-2xl{
 	font-size: 1.5rem;
 	line-height: 2rem;

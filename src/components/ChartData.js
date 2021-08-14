@@ -133,7 +133,7 @@ export default function ChartLine() {
                     <Card>
                         <br/>
                         <CardHeader color="purple" contentPosition="left">
-                            <h2 className="text-white text-2xl">Datos de Temperatura y Humedad</h2>
+                            <h2 className="text-lg">Datos de Temperatura y Humedad</h2>
                         </CardHeader>
                         <CardBody>
                             <div className="relative h-96">
@@ -153,7 +153,7 @@ export default function ChartLine() {
                         <br />
                         <br />
                         <CardHeader color="purple" contentPosition="left">
-                            <h2 className="text-white text-2xl"> Gráfica de Temperaturas</h2>
+                            <h2 className="text-lg"> Gráfica de Temperaturas</h2>
                         </CardHeader>
                         <CardBody>
                             <div className="relative h-96">
@@ -182,7 +182,7 @@ export default function ChartLine() {
                         <br />
                         <br />
                         <CardHeader color="purple" contentPosition="left">
-                            <h2 className="text-white text-2xl">Gráfica de Humedad</h2>
+                            <h2 className="text-lg">Gráfica de Humedad</h2>
                         </CardHeader>
                         <CardBody>
                             <div className="relative h-96">
@@ -215,7 +215,7 @@ export default function ChartLine() {
                     <Card>
                         <br/>
                         <CardHeader color="purple" contentPosition="left">
-                            <h2 className="text-white text-2xl">Datos de Temperatura y Humedad</h2>
+                            <h2 className="text-lg">Datos de Temperatura y Humedad</h2>
                         </CardHeader>
                         <CardBody>
                             <div className="relative h-96">
@@ -235,7 +235,7 @@ export default function ChartLine() {
                         <br />
                         <br />
                         <CardHeader color="purple" contentPosition="left">
-                            <h2 className="text-white text-2xl"> Gráfica de Temperaturas</h2>
+                            <h2 className="text-lg"> Gráfica de Temperaturas</h2>
                         </CardHeader>
                         <CardBody>
                             <div className="relative h-96">
@@ -264,7 +264,7 @@ export default function ChartLine() {
                         <br />
                         <br />
                         <CardHeader color="purple" contentPosition="left">
-                            <h2 className="text-white text-2xl">Gráfica de Humedad</h2>
+                            <h2 className="text-lg">Gráfica de Humedad</h2>
                         </CardHeader>
                         <CardBody>
                             <div className="relative h-96">
@@ -297,7 +297,7 @@ export default function ChartLine() {
                     <Card>
                         <br/>
                         <CardHeader color="purple" contentPosition="left">
-                            <h2 className="text-white text-2xl">Datos de Temperatura y Humedad</h2>
+                            <h2 className="text-lg">Datos de Temperatura y Humedad</h2>
                         </CardHeader>
                         <CardBody>
                             <div className="relative h-96">
@@ -317,7 +317,7 @@ export default function ChartLine() {
                         <br />
                         <br />
                         <CardHeader color="purple" contentPosition="left">
-                            <h2 className="text-white text-2xl"> Gráfica de Temperaturas</h2>
+                            <h2 className="text-lg"> Gráfica de Temperaturas</h2>
                         </CardHeader>
                         <CardBody>
                             <div className="relative h-96">
@@ -346,7 +346,7 @@ export default function ChartLine() {
                         <br />
                         <br />
                         <CardHeader color="purple" contentPosition="left">
-                            <h2 className="text-white text-2xl">Gráfica de Humedad</h2>
+                            <h2 className="text-lg">Gráfica de Humedad</h2>
                         </CardHeader>
                         <CardBody>
                             <div className="relative h-96">
@@ -379,7 +379,7 @@ export default function ChartLine() {
                     <Card>
                         <br/>
                         <CardHeader color="purple" contentPosition="left">
-                            <h2 className="text-white text-2xl">Datos de Temperatura y Humedad</h2>
+                            <h2 class="text-lg">Datos de Temperatura y Humedad</h2>
                         </CardHeader>
                         <CardBody>
                             <div className="relative h-96">
@@ -399,7 +399,7 @@ export default function ChartLine() {
                         <br />
                         <br />
                         <CardHeader color="purple" contentPosition="left">
-                            <h2 className="text-white text-2xl"> Gráfica de Temperaturas</h2>
+                            <h2 className="text-lg"> Gráfica de Temperaturas</h2>
                         </CardHeader>
                         <CardBody>
                             <div className="relative h-96">
@@ -428,7 +428,7 @@ export default function ChartLine() {
                         <br />
                         <br />
                         <CardHeader color="purple" contentPosition="left">
-                            <h2 className="text-white text-2xl">Gráfica de Humedad</h2>
+                            <h2 className="text-lg">Gráfica de Humedad</h2>
                         </CardHeader>
                         <CardBody>
                             <div className="relative h-96">
@@ -456,7 +456,6 @@ export default function ChartLine() {
                         </CardBody>
                     </Card>
                 </TabPane>
-                
             </TabContent>
         </Tab>    
         
