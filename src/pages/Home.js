@@ -11,7 +11,7 @@ export default function Home() {
         </div>
             <div className="px-3 md:px-8 h-auto -mt-24">
                 <div className="container mx-auto max-w-full">
-                    <div className="grid grid-cols-2 lg:grid-cols-2 px-4 mb-16">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 px-4 mb-16">
                         <div className="px-4 mb-10">
                             <Card>
                                 <CardHeader color="purple">
