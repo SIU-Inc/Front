@@ -13,6 +13,16 @@ import MapICAS from '../components/MapICAS';
 import MapCortina from '../components/MapCortina';
 import MapPoli from '../components/MapPoli';
 import { ExportCSV } from "../ExportCSV";
+import {
+    Legend,
+    CartesianGrid,
+    XAxis,
+    YAxis,
+    Tooltip,
+    ResponsiveContainer,
+    Bar,
+    BarChart,
+  } from "recharts";
 
 
 export default function CardTable() {
@@ -23,6 +33,7 @@ export default function CardTable() {
     const [romero, setRomero] = useState([]);
     const [labs, setLabs] = useState([]);
     const [poli, setPoli] = useState([]);
+    const [live, setLive] = useState([]);
     const [loading, setLoading] = useState(false);
 
 
@@ -47,6 +58,7 @@ export default function CardTable() {
             const romeroTemps = [];
             const labsTemps = [];
             const poliTemps = [];
+            const liveTemps = [];
             response?.allData?.forEach((temp, index) => {
             if (temp.id > 200 && temp.id < 221) {
                 labsTemps.push(temp);
@@ -60,11 +72,15 @@ export default function CardTable() {
             if (temp.id > 397 && temp.id < 415) {
                 icasTemps.push(temp);
             }
+            if (temp.id > 971){
+                liveTemps.push(temp);
+            }
             });
             setLabs(mapReceivedData(labsTemps));
             setRomero(mapReceivedData(romeroTemps));
             setPoli(mapReceivedData(poliTemps));
             setIcas(mapReceivedData(icasTemps));
+            setLive(mapReceivedData(liveTemps));
         } catch (error) {}
         setLoading(false);
         };
@@ -121,6 +137,18 @@ export default function CardTable() {
                 >
                     <Icon name="room" size="lg" />
                     Polideportivo
+                </TabItem>
+                <TabItem
+                    onClick={(e) => {
+                        e.preventDefault();
+                        setOpenTab(5);
+                    }}
+                    ripple="light"
+                    active={openTab === 5 ? true : false}
+                    href="tabItem"
+                >
+                    <Icon name="room" size="lg" />
+                    En vivo
                 </TabItem>
             </TabList>
             <TabContent>
@@ -359,6 +387,76 @@ export default function CardTable() {
                             <div className="container mx-auto max-w-full">
                                 <div className="grid grid-cols-1 px-4 h-[600px]">
                                     <MapPoli />
+                                </div>
+                            </div>
+                        </div>
+                    </Card>
+                </TabPane>
+                <TabPane active={openTab === 5 ? true : false}>
+                    <Card>
+                        <br />
+                        <CardHeader color="purple" contentPosition="left">
+                            <h2 className="text-lg">En vivo</h2>
+                        </CardHeader>
+                        <CardBody>
+                            <div className="overflow-x-auto">
+                                <table className="items-center w-full bg-transparent border-collapse">
+                                    <thead>
+                                        <tr>
+                                            <th className="px-2 text-purple-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
+                                            <Icon name="whatshot" fontSize="small" />
+                                            Temperatura
+                                            </th>
+                                            <th className="px-2 text-purple-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
+                                            <Icon name="event" fontSize="small" />
+                                            Hora
+                                            </th>
+                                            <th className="px-2 text-purple-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
+                                            <Icon name="timeline" fontSize="small" />
+                                            Frecuencia
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {live?.map((liveTemps) => (
+                                            <tr key={liveTemps.id}>
+                                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
+                                                    {liveTemps.temperature} °C
+                                                </td>
+                                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
+                                                    {liveTemps.time} {liveTemps.createdAt}
+                                                </td>
+                                                <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
+                                                    {liveTemps.frequency}
+                                                </td>
+                                            </tr>
+                                        ))}    
+                                    </tbody>
+                                </table>
+                            </div>
+                        </CardBody>
+                        <ExportCSV 
+                            csvData={live}
+                            fileName= 'works'
+                            />
+                        <br />
+                        <br />
+                        <div className="px-3 md:px-8 h-auto -mt-28 mb-16">
+                            <div className="container mx-auto max-w-full">
+                                <div className="grid grid-cols-1 px-4 h-[600px]">
+                                <div className="relative h-96">
+                                    <ResponsiveContainer width="100%" height="100%">
+                                        <BarChart width={730} height={250} data={live}>
+                                            <CartesianGrid strokeDasharray="3 3" />
+                                            <XAxis dataKey="time" />
+                                            <YAxis />
+                                            <Tooltip />
+                                            <Legend />
+                                            <Bar dataKey="temperature" fill="#8884d8" />
+                                            <Bar dataKey="humidity" fill="#82ca9d" />
+                                        </BarChart>
+                                    </ResponsiveContainer>                
+                                    </div>
                                 </div>
                             </div>
                         </div>
