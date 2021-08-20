@@ -20,8 +20,8 @@ import {
     YAxis,
     Tooltip,
     ResponsiveContainer,
-    Bar,
-    BarChart,
+    Line,
+    LineChart,
   } from "recharts";
 
 
@@ -392,8 +392,37 @@ export default function CardTable() {
                         </div>
                     </Card>
                 </TabPane>
+
                 <TabPane active={openTab === 5 ? true : false}>
                     <Card>
+                    <br/>
+                    <CardHeader color="purple" contentPosition="left">
+                            <h2 className="text-lg"> Gráfica de Temperaturas en vivo</h2>
+                        </CardHeader>
+                        <CardBody>
+                            <div className="relative h-96">
+                                <ResponsiveContainer width="100%" height="100%">
+                                    <LineChart
+                                    width={500}
+                                    height={300}
+                                    data={live}
+                                    margin={{
+                                        top: 5,
+                                        right: 30,
+                                        left: 20,
+                                        bottom: 5,
+                                    }}
+                                    >
+                                    <CartesianGrid strokeDasharray="3 3" />
+                                    <XAxis dataKey="time" />
+                                    <YAxis />
+                                    <Tooltip />
+                                    <Legend />
+                                    <Line type="monotone" dataKey="temperature" stroke="#8884d8" activeDot={{ r: 8 }} />
+                                    </LineChart>
+                                </ResponsiveContainer>       
+                            </div>
+                        </CardBody>
                         <br />
                         <CardHeader color="purple" contentPosition="left">
                             <h2 className="text-lg">En vivo</h2>
@@ -404,7 +433,7 @@ export default function CardTable() {
                                     <thead>
                                         <tr>
                                             <th className="px-2 text-purple-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
-                                            <Icon name="whatshot" fontSize="small" />
+                                            <Icon name="opacity" fontSize="small" />
                                             Temperatura
                                             </th>
                                             <th className="px-2 text-purple-500 align-middle border-b border-solid border-gray-200 py-3 text-sm whitespace-nowrap font-light text-left">
@@ -421,7 +450,7 @@ export default function CardTable() {
                                         {live?.map((liveTemps) => (
                                             <tr key={liveTemps.id}>
                                                 <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
-                                                    {liveTemps.temperature} °C
+                                                    {liveTemps.temperature} %
                                                 </td>
                                                 <td className="border-b border-gray-200 align-middle font-light text-sm whitespace-nowrap px-2 py-4 text-left">
                                                     {liveTemps.time} {liveTemps.createdAt}
@@ -437,31 +466,11 @@ export default function CardTable() {
                         </CardBody>
                         <ExportCSV 
                             csvData={live}
-                            fileName= 'works'
+                            fileName= 'Data Polideportivo'
                             />
-                        <br />
-                        <br />
-                        <div className="px-3 md:px-8 h-auto -mt-28 mb-16">
-                            <div className="container mx-auto max-w-full">
-                                <div className="grid grid-cols-1 px-4 h-[600px]">
-                                <div className="relative h-96">
-                                    <ResponsiveContainer width="100%" height="100%">
-                                        <BarChart width={730} height={250} data={live}>
-                                            <CartesianGrid strokeDasharray="3 3" />
-                                            <XAxis dataKey="time" />
-                                            <YAxis />
-                                            <Tooltip />
-                                            <Legend />
-                                            <Bar dataKey="temperature" fill="#8884d8" />
-                                            <Bar dataKey="humidity" fill="#82ca9d" />
-                                        </BarChart>
-                                    </ResponsiveContainer>                
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </Card>
                 </TabPane>
+
             </TabContent>
         </Tab>
     );
