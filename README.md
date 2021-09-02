@@ -15,11 +15,23 @@ Proyecto, en el cual están el backend y frontend, encargado de hacer la conexi�
 * MySQL Server 8.0
 * Editor de código fuente. (Sugerencia: Visual Studio Code)
 
-### Instalación
+### Actualidad del Proyecto
+
+-- Actualmente, la aplicación está montada en Heroku. Por lo que las configuraciones de la base de datos y/o URL's correspondientes, están basados en esta plataforma.
+
+-- URL de la API:
+
+https://api-ttn.herokuapp.com/api/temperature
+
+-- URL del FrontEnd:
+
+https://ttn-tesis.herokuapp.com/dashboard
+
+### Instalación Local
 
 * Clonar el proyecto o descargar el archivo zip.
 
-### Pasos para correr el programa.
+### Pasos para correr el programa (Backend y Frontend)
 * Crear base de datos en MySQL, con el nombre de "ttn_api".
 
 * Acceder a la carpeta raíz y correr el siguiente comando.
